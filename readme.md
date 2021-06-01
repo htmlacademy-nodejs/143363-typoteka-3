@@ -1,7 +1,7 @@
 # Личный проект «Типотека» [![Build status][travis-image]][travis-url]
 
-* Студент: [Дмитрий Киценко](https://up.htmlacademy.ru/nodejs/3/user/143363).
-* Наставник: `Неизвестно`.
+- Студент: [Дмитрий Киценко](https://up.htmlacademy.ru/nodejs/3/user/143363).
+- Наставник: [Сергей Вохмянин](https://htmlacademy.ru/profile/id530823).
 
 ---
 
