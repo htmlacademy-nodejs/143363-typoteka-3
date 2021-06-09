@@ -1,6 +1,6 @@
 'use strict';
 
-const {Cli} = require(`./comand-line-interface`);
+const {Cli} = require(`./cli`);
 const {USER_ARGV_INDEX, DEFAULT_USER_COMAND, ExitCodes} = require(`../constants`);
 
 const userCommands = process.argv.slice(USER_ARGV_INDEX);
