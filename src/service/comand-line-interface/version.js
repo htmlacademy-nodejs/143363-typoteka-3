@@ -6,6 +6,6 @@ const packageJson = require(`../../../package.json`);
 module.exports = {
   name: `--version`,
   run: () => {
-    console.info(chalk.gray(packageJson.version));
+    console.info(chalk.blue(packageJson.version));
   }
 };
