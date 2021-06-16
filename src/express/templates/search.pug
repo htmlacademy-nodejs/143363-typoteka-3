@@ -3,7 +3,7 @@ extends ./layout.pug
 block content
   main
     section.search-page
-      .search-page__wrapper
+      .search-page__wrapper(class={'search-page__wrapper--empty': !searchResults})
         h1 Поиск
         .search.search-page__form
           form(action='#' method='get')
