@@ -1,13 +1,15 @@
 'use strict';
 
 const chalk = require(`chalk`);
+const {nanoid} = require(`nanoid`);
 const fs = require(`fs`).promises;
 const {getRandomInt, shuffle, getRandomItem, getRandomDate, getStartDate} = require(`../../utils`);
-const {MAX_COUNT, DEFAULT_COUNT, MAX_ANNOUNCE_LENGTH, FILE_NAME, PERIOD_MONTH, ExitCodes} = require(`../../constants`);
+const {MAX_COUNT, DEFAULT_COUNT, MAX_ANNOUNCE_LENGTH, FILE_NAME, PERIOD_MONTH, ExitCodes, MAX_ID_LENGTH} = require(`../../constants`);
 
 const TITLES_FILE = `./data/titles.txt`;
 const SENTENCES_FILE = `./data/sentences.txt`;
 const CATEGORIES_FILE = `./data/categories.txt`;
+const COMMENTS_FILE = `./data/comments.txt`;
 
 const readContent = async (fileName) => {
   try {
@@ -19,12 +21,18 @@ const readContent = async (fileName) => {
   }
 };
 
-const generateData = (count, titles, sentences, categories) => Array(count).fill({}).map(() => ({
+const generateComments = (comments, count) => {
+  return shuffle(comments).slice(0, count).map((text) => ({id: nanoid(MAX_ID_LENGTH), text}));
+};
+
+const generateData = (count, titles, sentences, categories, comments) => Array(count).fill({}).map(() => ({
+  id: nanoid(MAX_ID_LENGTH),
   title: getRandomItem(titles),
   createdDate: getRandomDate(getStartDate(PERIOD_MONTH), new Date()).toLocaleString(`ru`),
   announce: shuffle(sentences).slice(0, getRandomInt(1, MAX_ANNOUNCE_LENGTH)).join(` `),
   fullText: shuffle(sentences).slice(0, getRandomInt(1, sentences.length)).join(` `),
   сategory: shuffle(categories).slice(0, getRandomInt(1, categories.length)),
+  comments: generateComments(comments, getRandomInt(1, comments.length))
 }));
 
 module.exports = {
@@ -40,8 +48,9 @@ module.exports = {
     const titles = await readContent(TITLES_FILE);
     const sentences = await readContent(SENTENCES_FILE);
     const categories = await readContent(CATEGORIES_FILE);
+    const comments = await readContent(COMMENTS_FILE);
 
-    const content = JSON.stringify(generateData(publicationsCount, titles, sentences, categories));
+    const content = JSON.stringify(generateData(publicationsCount, titles, sentences, categories, comments));
 
     try {
       await fs.writeFile(FILE_NAME, content);

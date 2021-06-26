@@ -8,6 +8,7 @@ const MAX_COUNT = 1000;
 const PERIOD_MONTH = 3;
 const DEFAULT_PORT = 3000;
 const PUBLIC_DIR = `public`;
+const MAX_ID_LENGTH = 5;
 
 const FILE_NAME = `mocks.json`;
 
@@ -32,6 +33,7 @@ module.exports = {
   DEFAULT_COUNT,
   MAX_ANNOUNCE_LENGTH,
   MAX_COUNT,
+  MAX_ID_LENGTH,
   FILE_NAME,
   ExitCodes,
   HttpCode,
