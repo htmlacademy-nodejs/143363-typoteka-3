@@ -1,5 +1,5 @@
 @host = http://localhost:3000
-@articleId = ccxHW
+@articleId = CE56W
 ###
 GET {{host}}/api/categories
 
@@ -44,7 +44,7 @@ Content-Type: application/json
 {"text": "new comment"}
 
 ###
-@commentId = GXoiu
+@commentId = m6me8
 DELETE {{host}}/api/articles/{{articleId}}/comments/{{commentId}}
 
 ###

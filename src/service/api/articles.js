@@ -22,7 +22,7 @@ module.exports = (app, articleService, commentService) => {
     return res.status(HttpCode.OK).json(article);
   });
 
-  route.post(`/`, [articleValidator, articleExists(articleService)], (req, res) => {
+  route.post(`/`, [articleValidator], (req, res) => {
     const article = req.body;
     const newArticle = articleService.create(article);
 

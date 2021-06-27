@@ -9,9 +9,8 @@ module.exports = (service) => (req, res, next) => {
 
   if (!article) {
     res.status(HttpCode.NOT_FOUND).json(`Article ${articleId} not found`);
+  } else {
+    res.locals.article = article;
+    next();
   }
-
-  res.locals.article = article;
-
-  next();
 };
