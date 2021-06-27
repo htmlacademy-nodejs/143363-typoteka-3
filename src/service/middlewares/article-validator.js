@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
   const keysExists = articleKeys.every((k) => keys.includes(k));
 
   if (!keysExists) {
-    return res.status(HttpCode.BAD_REQUEST).send(`Bad request`);
+    res.status(HttpCode.BAD_REQUEST).send(`Bad request`);
   }
 
   next();

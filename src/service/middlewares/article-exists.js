@@ -8,7 +8,7 @@ module.exports = (service) => (req, res, next) => {
   const article = service.findOne(articleId);
 
   if (!article) {
-    return res.status(HttpCode.NOT_FOUND).json(`Article ${articleId} not found`);
+    res.status(HttpCode.NOT_FOUND).json(`Article ${articleId} not found`);
   }
 
   res.locals.article = article;
