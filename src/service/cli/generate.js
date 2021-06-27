@@ -3,7 +3,7 @@
 const chalk = require(`chalk`);
 const {nanoid} = require(`nanoid`);
 const fs = require(`fs`).promises;
-const {getRandomInt, shuffle, getRandomItem, getRandomDate, getStartDate} = require(`../../utils`);
+const {getRandomInt, shuffle, getRandomItem, getRandomDate, getStartDate, generateComments} = require(`../../utils`);
 const {MAX_COUNT, DEFAULT_COUNT, MAX_ANNOUNCE_LENGTH, FILE_NAME, PERIOD_MONTH, ExitCodes, MAX_ID_LENGTH} = require(`../../constants`);
 
 const TITLES_FILE = `./data/titles.txt`;
@@ -19,10 +19,6 @@ const readContent = async (fileName) => {
     console.error(chalk.red(`Не удалось прочитать файл ${fileName}: ${e}`));
     return [];
   }
-};
-
-const generateComments = (comments, count) => {
-  return shuffle(comments).slice(0, count).map((text) => ({id: nanoid(MAX_ID_LENGTH), text}));
 };
 
 const generateData = (count, titles, sentences, categories, comments) => Array(count).fill({}).map(() => ({

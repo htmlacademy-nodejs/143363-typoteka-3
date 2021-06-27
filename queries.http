@@ -1,0 +1,52 @@
+@host = http://localhost:3000
+@articleId = ccxHW
+###
+GET {{host}}/api/categories
+
+###
+GET {{host}}/api/articles
+
+###
+GET {{host}}/api/articles/{{articleId}}
+
+###
+POST {{host}}/api/articles
+Content-Type: application/json
+
+{
+  "title": "Новая публикация",
+  "announce": "Просто текст и т.д. и т.п.",
+  "fullText": "Маленькими шагами. Рок-музыка всегда ассоциировалась с протестами. Так ли это на самом деле? Альбом стал настоящим открытием года. Мощные гитарные рифы и скоростные соло-партии не дадут заскучать.",
+  "сategory": ["За жизнь", "Программирование"]
+}
+
+###
+PUT {{host}}/api/articles/{{articleId}}
+Content-Type: application/json
+
+{
+  "title": "Обновленная публикация",
+  "announce": "Просто текст и т.д. и т.п.",
+  "fullText": "Маленькими шагами. Рок-музыка всегда ассоциировалась с протестами. Так ли это на самом деле? Альбом стал настоящим открытием года. Мощные гитарные рифы и скоростные соло-партии не дадут заскучать.",
+  "сategory": ["За жизнь", "Программирование"]
+}
+
+###
+DELETE {{host}}/api/articles/{{articleId}}
+
+###
+GET  {{host}}/api/articles/{{articleId}}/comments
+
+###
+POST {{host}}/api/articles/{{articleId}}/comments
+Content-Type: application/json
+
+{"text": "new comment"}
+
+###
+@commentId = GXoiu
+DELETE {{host}}/api/articles/{{articleId}}/comments/{{commentId}}
+
+###
+@query = Лучший
+GET {{host}}/api/search?query={{query}}

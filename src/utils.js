@@ -1,5 +1,8 @@
 'use strict';
 
+const {nanoid} = require(`nanoid`);
+const {MAX_ID_LENGTH} = require(`./constants`);
+
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -21,6 +24,10 @@ const getRandomDate = (start, end) => {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 };
 
+const generateComments = (comments, count) => {
+  return shuffle(comments).slice(0, count).map((text) => ({id: nanoid(MAX_ID_LENGTH), text}));
+};
+
 const getStartDate = (periodInMonth) => {
   const date = new Date();
   date.setMonth(date.getMonth() - periodInMonth);
@@ -32,5 +39,6 @@ module.exports = {
   shuffle,
   getRandomItem,
   getRandomDate,
-  getStartDate
+  getStartDate,
+  generateComments,
 };

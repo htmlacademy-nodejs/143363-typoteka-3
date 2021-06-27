@@ -9,6 +9,7 @@ const PERIOD_MONTH = 3;
 const DEFAULT_PORT = 3000;
 const PUBLIC_DIR = `public`;
 const MAX_ID_LENGTH = 5;
+const API_PREFIX = `/api`;
 
 const FILE_NAME = `mocks.json`;
 
@@ -19,13 +20,16 @@ const ExitCodes = {
 
 const HttpCode = {
   OK: 200,
+  CREATED: 201,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
   NOT_FOUND: 404,
   INTERNAL_SERVER_ERROR: 500,
-  FORBIDDEN: 403,
-  UNAUTHORIZED: 401,
 };
 
 module.exports = {
+  API_PREFIX,
   PERIOD_MONTH,
   USER_ARGV_INDEX,
   PUBLIC_DIR,
