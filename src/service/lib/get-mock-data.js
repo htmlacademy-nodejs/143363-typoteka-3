@@ -11,7 +11,7 @@ const getMockData = async () => {
   }
 
   try {
-    const fileContent = await fs.readFile(FILE_NAME);
+    const fileContent = await fs.readFile(FILE_NAME, {encoding: `utf-8`});
     data = JSON.parse(fileContent);
     return Promise.resolve(data);
   } catch (e) {

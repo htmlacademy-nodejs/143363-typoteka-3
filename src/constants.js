@@ -28,9 +28,14 @@ const HttpCode = {
   INTERNAL_SERVER_ERROR: 500,
 };
 
+const Env = {
+  PRODUCTION: `production`
+};
+
 module.exports = {
   API_PREFIX,
   PERIOD_MONTH,
+  Env,
   USER_ARGV_INDEX,
   PUBLIC_DIR,
   DEFAULT_USER_COMAND,
