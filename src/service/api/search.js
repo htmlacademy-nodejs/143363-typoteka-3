@@ -10,8 +10,15 @@ module.exports = (app, service) => {
   route.get(`/`, (req, res) => {
     const {query} = req.query;
 
+    if (!query) {
+      return res.status(HttpCode.BAD_REQUEST).send(`Bad request`);
+    }
+
     const results = service.findAll(query);
 
-    res.status(HttpCode.OK).json(results);
+    if (results.length === 0) {
+      return res.status(HttpCode.NOT_FOUND).send(`Not found`);
+    }
+    return res.status(HttpCode.OK).json(results);
   });
 };

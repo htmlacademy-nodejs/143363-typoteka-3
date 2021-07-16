@@ -26,10 +26,10 @@ module.exports = (app, articleService, commentService) => {
     const article = req.body;
     const newArticle = articleService.create(article);
 
-    return res.status(HttpCode.OK).json(newArticle);
+    return res.status(HttpCode.CREATED).json(newArticle);
   });
 
-  route.put(`/:articleId`, articleValidator, (req, res) => {
+  route.put(`/:articleId`, [articleExists(articleService), articleValidator], (req, res) => {
     const {articleId} = req.params;
 
     const updatedArticle = articleService.update(articleId, req.body);
