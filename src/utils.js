@@ -34,10 +34,13 @@ const getStartDate = (periodInMonth) => {
   return date;
 };
 
+const ensureArray = (value) => Array.isArray(value) ? value : [value];
+
 module.exports = {
   getRandomInt,
   shuffle,
   getRandomItem,
+  ensureArray,
   getRandomDate,
   getStartDate,
   generateComments,

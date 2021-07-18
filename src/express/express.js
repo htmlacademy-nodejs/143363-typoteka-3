@@ -3,7 +3,7 @@
 const express = require(`express`);
 const {resolve} = require(`path`);
 const {green} = require(`chalk`);
-const {PUBLIC_DIR} = require(`../constants`);
+const {PUBLIC_DIR, UPLOAD_DIR} = require(`../constants`);
 
 const articlesRouter = require(`./routes/articles`);
 const myRouter = require(`./routes/my`);
@@ -14,6 +14,7 @@ const PORT = 8080;
 const app = express();
 
 app.use(express.static(resolve(__dirname, PUBLIC_DIR)));
+app.use(express.static(resolve(__dirname, UPLOAD_DIR)));
 
 app.set(`views`, resolve(__dirname, `./templates`));
 app.set(`view engine`, `pug`);

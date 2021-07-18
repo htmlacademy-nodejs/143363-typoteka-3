@@ -7,7 +7,9 @@ const MAX_ANNOUNCE_LENGTH = 5;
 const MAX_COUNT = 1000;
 const PERIOD_MONTH = 3;
 const DEFAULT_PORT = 3000;
+const TIMEOUT = 1000;
 const PUBLIC_DIR = `public`;
+const UPLOAD_DIR = `upload`;
 const MAX_ID_LENGTH = 5;
 const API_PREFIX = `/api`;
 
@@ -38,7 +40,9 @@ module.exports = {
   Env,
   USER_ARGV_INDEX,
   PUBLIC_DIR,
+  UPLOAD_DIR,
   DEFAULT_USER_COMAND,
+  TIMEOUT,
   DEFAULT_COUNT,
   MAX_ANNOUNCE_LENGTH,
   MAX_COUNT,

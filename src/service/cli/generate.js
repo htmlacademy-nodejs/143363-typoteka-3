@@ -27,7 +27,7 @@ const generateData = (count, titles, sentences, categories, comments) => Array(c
   createdDate: getRandomDate(getStartDate(PERIOD_MONTH), new Date()).toLocaleString(`ru`),
   announce: shuffle(sentences).slice(0, getRandomInt(1, MAX_ANNOUNCE_LENGTH)).join(` `),
   fullText: shuffle(sentences).slice(0, getRandomInt(1, sentences.length)).join(` `),
-  сategory: shuffle(categories).slice(0, getRandomInt(1, categories.length)),
+  category: shuffle(categories).slice(0, getRandomInt(1, categories.length)),
   comments: generateComments(comments, getRandomInt(1, comments.length))
 }));
 

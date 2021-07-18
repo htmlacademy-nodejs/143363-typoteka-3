@@ -9,15 +9,13 @@ const articles = require(`./articles`);
 const categories = require(`./categories`);
 const search = require(`./search`);
 
-const app = new Router();
-
-(async () => {
+module.exports = async () => {
+  const app = new Router();
   const mockData = await getMockData(FILE_NAME);
 
   categories(app, new CategoryService(mockData));
   articles(app, new ArticleService(mockData), new CommentService());
   search(app, new SearchService(mockData));
-})();
 
-
-module.exports = app;
+  return app;
+};

@@ -1,4 +1,6 @@
 'use strict';
+const {nanoid} = require(`nanoid`);
+const {MAX_ID_LENGTH} = require(`../../constants`);
 
 class ArticleService {
   constructor(articles) {
@@ -15,7 +17,7 @@ class ArticleService {
   }
 
   create(article) {
-    const newArticle = {comments: [], createdDate: new Date().toLocaleString(`ru`), ...article};
+    const newArticle = {id: nanoid(MAX_ID_LENGTH), comments: [], createdDate: new Date().toLocaleString(`ru`), ...article};
 
     this._articles.push(newArticle);
     return newArticle;

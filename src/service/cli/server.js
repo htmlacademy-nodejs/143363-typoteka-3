@@ -2,12 +2,12 @@
 
 const express = require(`express`);
 const {DEFAULT_PORT, API_PREFIX, HttpCode} = require(`../../constants`);
-const apiRouter = require(`../api`);
+const getAPIRouter = require(`../api`);
 const {getLogger} = require(`../lib/logger`);
 
 module.exports = {
   name: `--server`,
-  run: (args) => {
+  run: async (args) => {
     const logger = getLogger({name: `api`});
     const [customPort] = args;
     const port = parseInt(customPort, 10) || DEFAULT_PORT;
@@ -19,6 +19,7 @@ module.exports = {
       next();
     });
     app.use(express.json());
+    const apiRouter = await getAPIRouter();
     app.use(API_PREFIX, apiRouter);
 
     // логируем запрос на несуществующий маршрут

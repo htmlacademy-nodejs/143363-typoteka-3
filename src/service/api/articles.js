@@ -18,7 +18,6 @@ module.exports = (app, articleService, commentService) => {
   route.get(`/:articleId`, articleExists(articleService), (req, res) => {
     const {articleId} = req.params;
     const article = articleService.findOne(articleId);
-
     return res.status(HttpCode.OK).json(article);
   });
 
