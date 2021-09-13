@@ -31,7 +31,7 @@ CREATE TABLE articles (
   announce TEXT NOT NULL,
   photo VARCHAR(50),
   full_text TEXT,
-  user_id INTEGER NOT NULL,
+  user_id INTEGER,
   FOREIGN KEY (user_id) REFERENCES users(id)
     ON UPDATE SET NULL
     ON DELETE SET NULL
@@ -41,10 +41,10 @@ CREATE TABLE comments (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   text TEXT NOT NULL,
   article_id INTEGER NOT NULL,
-  user_id INTEGER NOT NULL,
+  user_id INTEGER,
   FOREIGN KEY (article_id) REFERENCES articles(id)
-    ON UPDATE SET NULL
-    ON DELETE SET NULL,
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES users(id)
     ON UPDATE SET NULL
     ON DELETE SET NULL
