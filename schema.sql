@@ -42,6 +42,7 @@ CREATE TABLE comments (
   text TEXT NOT NULL,
   article_id INTEGER NOT NULL,
   user_id INTEGER,
+  created_at TIMESTAMP DEFAULT current_timestamp,
   FOREIGN KEY (article_id) REFERENCES articles(id)
     ON UPDATE CASCADE
     ON DELETE CASCADE,
